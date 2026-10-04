@@ -1,0 +1,6 @@
+Instrumentation mode: {{ .Values.instrumentationMode }}
+
+Port-forward the checkout gateway:
+  kubectl -n {{ .Release.Namespace }} port-forward svc/{{ include "observability-lab.fullname" . }}-gateway 8000:8000
+
+The chart deploys PostgreSQL and application services. Configure otel.collectorEndpoint to a Collector reachable from this cluster.

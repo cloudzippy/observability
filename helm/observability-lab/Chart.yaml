@@ -1,0 +1,6 @@
+apiVersion: v2
+name: observability-lab
+description: Dual-mode Flask microservices and PostgreSQL for learning OpenTelemetry
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

@@ -1,0 +1,27 @@
+services:
+  gateway:
+    image: observability-lab/gateway:sdk
+    build:
+      context: .
+      dockerfile: implementations/sdk/gateway/Dockerfile
+    environment:
+      OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED: "false"
+      OTEL_PYTHON_LOG_CORRELATION: "false"
+
+  orders:
+    image: observability-lab/orders:sdk
+    build:
+      context: .
+      dockerfile: implementations/sdk/orders/Dockerfile
+    environment:
+      OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED: "false"
+      OTEL_PYTHON_LOG_CORRELATION: "false"
+
+  inventory:
+    image: observability-lab/inventory:sdk
+    build:
+      context: .
+      dockerfile: implementations/sdk/inventory/Dockerfile
+    environment:
+      OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED: "false"
+      OTEL_PYTHON_LOG_CORRELATION: "false"

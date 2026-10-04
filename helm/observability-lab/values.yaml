@@ -1,0 +1,49 @@
+instrumentationMode: auto
+
+images:
+  auto:
+    gateway: observability-lab/gateway:auto
+    orders: observability-lab/orders:auto
+    inventory: observability-lab/inventory:auto
+  sdk:
+    gateway: observability-lab/gateway:sdk
+    orders: observability-lab/orders:sdk
+    inventory: observability-lab/inventory:sdk
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+otel:
+  collectorEndpoint: http://otel-collector:4318
+  environment: kubernetes
+  namespace: observability-lab
+
+services:
+  gateway:
+    port: 8000
+    serviceName: checkout-gateway
+  orders:
+    port: 8001
+    serviceName: orders
+  inventory:
+    port: 8002
+    serviceName: inventory
+
+postgres:
+  image: postgres:16-alpine
+  database: shop
+  auth:
+    username: lab
+    password: lab
+  storage:
+    size: 1Gi
+    storageClassName: ""
+  resources: {}
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 96Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
